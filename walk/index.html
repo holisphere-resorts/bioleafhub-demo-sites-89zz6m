@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIRRA — walk the field</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root { --accent:#c7a35b; --ink:#102219; --paper:#f8f6ef; --bone:#f0ede4; --forest:#0d2b1e; --green:#194d35; --gold:#c7a35b; --gold-ink:#795817; --oxblood:#6f2635; --line:rgba(16,34,25,.18); }
+  body { font-family:"DM Sans", sans-serif; }
+  .wordmark { font-family:"Bricolage Grotesque", sans-serif; font-size:26px; font-weight:700; letter-spacing:-.07em; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.4); }
+  #intro { inset:0; z-index:7; display:flex; align-items:flex-end; padding:0 clamp(20px,6vw,90px) clamp(60px,9vh,110px); pointer-events:none; transition:opacity .8s; }
+  #intro.hide { opacity:0; }
+  #intro p.k { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  #intro h1 { font-family:"Bricolage Grotesque", sans-serif; font-size:clamp(46px,8vw,120px); line-height:.82; letter-spacing:-.06em; font-weight:600; text-shadow:0 4px 30px rgba(0,0,0,.45); max-width:14ch; }
+  #intro p.s { margin-top:18px; font-size:15px; opacity:.9; max-width:44ch; text-shadow:0 2px 10px rgba(0,0,0,.5); }
+  /* the "real" site, revealed at the end — EIRRA without the shop */
+  #site { background:var(--paper); color:var(--ink); }
+  .site-header { height:78px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:0 clamp(20px,4vw,64px); border-bottom:1px solid var(--line); position:sticky; top:0; background:color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter:blur(18px); z-index:2; }
+  .site-header .wordmark { color:var(--ink); text-shadow:none; }
+  .site-header nav { display:flex; gap:26px; font-size:14px; } .site-header nav a { color:var(--ink); text-decoration:none; }
+  .site-header .right { text-align:right; } .site-header .right button { background:none; border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:inherit; font-size:13px; cursor:pointer; color:var(--ink); }
+  .hero { padding:clamp(70px,10vw,140px) clamp(20px,7vw,118px) clamp(50px,7vw,90px); }
+  .kicker { font-size:13px; color:var(--gold); margin-bottom:22px; letter-spacing:.06em; }
+  .hero h2 { font-family:"Bricolage Grotesque", sans-serif; font-size:clamp(54px,9vw,140px); line-height:.8; letter-spacing:-.07em; font-weight:600; }
+  .hero p { margin-top:26px; max-width:52ch; font-size:17px; line-height:1.55; }
+  .proof-strip { display:flex; flex-wrap:wrap; gap:14px 28px; padding:22px clamp(20px,7vw,118px); border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:13px; letter-spacing:.04em; }
+  .standard { padding:clamp(60px,8vw,110px) clamp(20px,7vw,118px); background:var(--bone); }
+  .standard p.k { font-size:13px; color:var(--oxblood); margin-bottom:16px; }
+  .standard h3 { font-family:"Bricolage Grotesque", sans-serif; font-size:clamp(38px,5.5vw,84px); line-height:.9; letter-spacing:-.06em; font-weight:600; margin-bottom:38px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+  .cards article { background:var(--paper); border:1px solid var(--line); padding:24px; border-radius:6px; }
+  .cards strong { display:block; font-size:20px; margin-bottom:8px; } .cards p { font-size:14px; line-height:1.5; opacity:.85; }
+  .btn { display:inline-block; margin-top:28px; background:var(--gold); color:#07100b; padding:14px 22px; border-radius:999px; text-decoration:none; font-size:14px; font-weight:500; }
+  .btn.ghost { background:none; border:1px solid var(--ink); color:var(--ink); }
+  footer { padding:40px clamp(20px,7vw,118px); font-size:13px; opacity:.7; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+</style>
+</head>
+<body>
+<div id="fade"></div>
+<div id="loader" class="ui"><div class="wordmark">EIRRA</div><div class="loader-text">Otwieram pole…</div><div id="bar"><i></i></div><small id="pct">0%</small></div>
+<div id="spots"></div>
+<div id="top" class="ui"><span class="wordmark">EIRRA</span><button id="home">⌂ Skrzyżowanie</button><button id="enter">Wejdź na stronę →</button></div>
+<div id="intro" class="ui"><div><p class="k">Precision botanical rituals</p><h1>Start in the field.</h1><p class="s">Kliknij dowolne miejsce na drodze, żeby tam przeskoczyć. Przeciągnij myszą, żeby się rozejrzeć: słońce, góry, rzędy roślin. Na końcu drogi czeka strona.</p></div></div>
+<div id="card" class="ui"><h2></h2><img alt=""><p></p><a href="#"></a></div>
+<div id="hint" class="ui">Klik = teleport · przeciągnij = rozejrzyj się · kółko = krok · P = współrzędne</div>
+
+<section id="site" class="ui">
+  <header class="site-header"><span class="wordmark">EIRRA</span>
+    <nav><a href="#">Rituals</a><a href="#">The standard</a><a href="#">Guides</a><a href="#">Wholesale</a><a href="#">About</a><a href="#">Contact</a></nav>
+    <div class="right"><button id="back">← Wróć na pole</button></div></header>
+  <div class="hero"><p class="kicker">Plant first. Proof always.</p><h2>Precision botanical rituals.</h2><p>A global concept house of precise CBD rituals for everyday balance, evening, movement and skin. Visible provenance, lot-level testing, clear local labels. No shop here: we work with partners, pharmacies and wholesale.</p><a class="btn" href="#">Talk to us about wholesale</a> <a class="btn ghost" href="#">See the lab standard</a></div>
+  <div class="proof-strip"><span>Broad &amp; full spectrum</span><span>Independent lab tested</span><span>Vegan formulas</span><span>Local-market formulations</span></div>
+  <div class="standard"><p class="k">The EIRRA standard</p><h3>Proof, built in.</h3>
+    <div class="cards"><article><strong>Tested</strong><p>Identity, potency and purity. Every sellable lot gets an original report from a qualified third-party laboratory.</p></article><article><strong>Traceable</strong><p>Origin, cultivar, harvest conditions and extraction method belong in the record, not behind a leaf icon.</p></article><article><strong>Market-aware</strong><p>Formats and labels adapted market by market. Final THC level must meet the selected market and verified lot.</p></article></div></div>
+  <footer><span>© 2026 BIOLEAFHUB s.r.o. · EIRRA</span><span>Demo: wejście 3D → strona. Sklep usunięty.</span></footer>
+</section>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+  "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.1.0/spark.module.js"
+} }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script type="module">
+import { createWorld, hempLeafTexture, hempPlantGeometry, sunSprite } from "./engine.js";
+import * as THREE from "three";
+
+const EYE = 1.55;                 // eye height when walking
+const SUN_DIR = [ -0.55, 0.32, -0.77 ];   // where the HDRI sun is (after rotation) — used for "look at the sun" and sun sprite
+
+const LEAF_PHOTO = await new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = "assets/hemp-leaf-cc0.jpg"; });   // CC0 photo, Wikimedia Commons
+const TEX = "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/";   // Poly Haven photo textures, CC0
+function photoTex(url, rep) { const t = new THREE.TextureLoader().load(url); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep, rep); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; }
+
+function buildField(group, ctx) {
+  ctx.scene.fog = new THREE.Fog(0xd9e2ea, 40, 170);                                   // haze = depth, like a real photo
+  // ground: real aerial grass/soil photo, tiled
+  const gm = new THREE.MeshStandardMaterial({ map: photoTex(TEX + "aerial_grass_rock/aerial_grass_rock_diff_2k.jpg", 60), roughness: 1, color: 0xb9c7a0 });
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(170, 64), gm); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; group.add(ground); ctx.colliders.push(ground);
+  // dirt roads (crossroads at the origin): real trail photo
+  const rm = new THREE.MeshStandardMaterial({ map: photoTex(TEX + "rocky_trail/rocky_trail_diff_2k.jpg", 40), roughness: 1, color: 0xcbbfa8 });
+  for (const rot of [0, Math.PI / 2]) { const r = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 340), rm); r.rotation.x = -Math.PI / 2; r.rotation.z = rot; r.position.y = 0.012; r.receiveShadow = true; r.material.map.repeat.set(1, 100); group.add(r); }
+  // hemp plants (instanced), shadows on
+  const leafTex = hempLeafTexture(THREE, 1024, LEAF_PHOTO);
+  const { stem, leaves } = hempPlantGeometry(THREE, 2.0);
+  const leafMat = new THREE.MeshStandardMaterial({ map: leafTex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.7, color: 0xffffff });
+  const stemMat = new THREE.MeshStandardMaterial({ color: 0x5a7c3a, roughness: 1 });
+  const positions = [];
+  const ROW = 1.05, STEP = 0.7, R = 70;
+  for (let x = -R; x <= R; x += ROW) for (let z = -R; z <= R; z += STEP) {
+    if (Math.abs(x) < 2.6 || Math.abs(z) < 2.6) continue;
+    if (x * x + z * z > R * R) continue;
+    positions.push([x + (Math.random() - 0.5) * 0.4, z + (Math.random() - 0.5) * 0.4]);
+  }
+  const iLeaves = new THREE.InstancedMesh(leaves, leafMat, positions.length), iStems = new THREE.InstancedMesh(stem, stemMat, positions.length);
+  iLeaves.castShadow = true; iStems.castShadow = true;
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), p = new THREE.Vector3(), col = new THREE.Color();
+  positions.forEach(([x, z], i) => { const sc = 0.75 + Math.random() * 0.55; q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.random() * 6.28); s.set(sc, sc, sc); p.set(x, 0, z); m.compose(p, q, s); iLeaves.setMatrixAt(i, m); iStems.setMatrixAt(i, m);
+    col.setHSL(0.24 + Math.random() * 0.04, 0.35 + Math.random() * 0.2, 0.52 + Math.random() * 0.2); iLeaves.setColorAt(i, col); });
+  group.add(iLeaves, iStems);
+  group.userData.leaves = iLeaves;
+  // sun glow + warm key light with shadows, matching the HDRI sun
+  const sun = sunSprite(THREE, 60); sun.position.set(SUN_DIR[0] * 300, SUN_DIR[1] * 300, SUN_DIR[2] * 300); group.add(sun);
+  const key = new THREE.DirectionalLight(0xfff1d6, 2.6); key.position.set(...SUN_DIR.map(v => v * 40)); key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048); key.shadow.camera.near = 1; key.shadow.camera.far = 120; key.shadow.camera.left = key.shadow.camera.bottom = -30; key.shadow.camera.right = key.shadow.camera.top = 30; key.shadow.bias = -0.0005;
+  group.add(key); group.add(key.target);
+  group.add(new THREE.HemisphereLight(0xdfe8ff, 0x3b4a2a, 0.5));
+  ctx.renderer.shadowMap.enabled = true; ctx.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+}
+
+const cbd = {
+  hdr: "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/alps_field_2k.hdr",   // Poly Haven, CC0: sun, field, mountains
+  hdrRotation: 1.1, exposure: 1.0, eyeY: EYE, loadingText: "Otwieram pole…",
+  build: buildField,
+  start: { pos: [0, EYE, 0], yaw: 0, pitch: -0.02 },
+  spots: [
+    { name: "Słońce", action: "look", look: [SUN_DIR[0] * 100, SUN_DIR[1] * 100, SUN_DIR[2] * 100], anchor: [SUN_DIR[0] * 100, SUN_DIR[1] * 100 - 4, SUN_DIR[2] * 100] },
+    { name: "Góry", action: "look", look: [80, 8, -60], anchor: [80, 6, -60] },
+    { name: "Rzędy roślin · The standard", pos: [-1.2, EYE, -8], look: [-6, 1.2, -12], anchor: [-3.2, 1.5, -9],
+      title: "The standard", text: "Cultivation is the first specification. Origin, cultivar, harvest conditions and extraction method shape what enters the formula — and they stay visible on every lot.", link: { href: "#", label: "See the lab standard →" } },
+    { name: "Partnerzy · Wholesale", pos: [1.2, EYE, -12], look: [6, 1.2, -16], anchor: [3.2, 1.5, -13],
+      title: "Wholesale & partners", text: "No online shop. EIRRA works with pharmacies, clinics, spas and distributors, market by market. One house, local standards.", link: { href: "#", label: "Talk to us →" } },
+    { name: "Dalej drogą · Wejście", cls: "final", pos: [0, EYE, -16], look: [0, 1.2, -22], anchor: [0, 1.4, -14], final: true,
+      title: "Welcome to EIRRA", text: "Plant first. Proof always. The site opens here." },
+  ],
+  tick(t, group) { const L = group.userData.leaves; if (L) { L.rotation.y = Math.sin(t * 0.6) * 0.004; L.position.x = Math.sin(t * 0.8) * 0.03; } },
+};
+
+const ui = { loader: document.getElementById("loader"), bar: document.querySelector("#bar i"), pct: document.getElementById("pct"), card: document.getElementById("card"), site: document.getElementById("site"), spotsLayer: document.getElementById("spots"), fade: document.getElementById("fade") };
+const world = createWorld({ scenes: { cbd }, first: "cbd", ui, onArrive() { document.getElementById("intro").classList.add("hide"); } });
+document.getElementById("home").onclick = () => world.goStart(false);
+document.getElementById("enter").onclick = () => ui.site.classList.add("show");
+document.getElementById("back").onclick = () => ui.site.classList.remove("show");
+document.body.addEventListener("pointerdown", () => document.getElementById("intro").classList.add("hide"), { once: true });
+</script>
+</body>
+</html>

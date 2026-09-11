@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2eee7">
+  <meta name="description" content="EIRRA Objects of Quiet — editorial premium CBD concept demo.">
+  <title>EIRRA — Objects of Quiet</title>
+  <style>
+    :root{--ivory:#f2eee7;--paper:#fbf9f5;--ink:#171315;--wine:#5b1727;--plum:#8d7189;--chrome:#bfc2c5;--sage:#768477;--ease:cubic-bezier(.16,.86,.28,1);--pad:clamp(20px,5vw,84px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--ivory)}body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}:focus-visible{outline:2px solid var(--wine);outline-offset:4px}
+    .mark{position:fixed;z-index:30;top:25px;left:var(--pad);font:italic 28px Georgia,serif;letter-spacing:-.06em}.mark::after{content:"";display:block;width:38px;height:1px;background:var(--wine);margin-top:3px}
+    .edition{position:fixed;z-index:30;top:28px;right:var(--pad);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+    .rail{position:fixed;z-index:30;left:50%;bottom:18px;transform:translateX(-50%);width:min(680px,calc(100vw - 28px));height:64px;padding:7px;background:rgba(248,245,239,.8);border:1px solid rgba(23,19,21,.2);backdrop-filter:blur(18px);border-radius:34px;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 16px 50px rgba(52,27,34,.12)}
+    .rail a{border-radius:27px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;transition:.35s var(--ease)}.rail a.active{background:var(--wine);color:white}.rail b{font:400 9px Georgia,serif}
+    main{scroll-snap-type:y proximity}.spread{position:relative;min-height:100svh;scroll-snap-align:start;overflow:hidden}
+    .hero{display:grid;grid-template-columns:.42fr .58fr;background:var(--ivory)}.hero-copy{padding:130px var(--pad) 120px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+    .overline{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--wine)}.hero h1{margin:50px 0 24px;font:400 clamp(68px,10.5vw,174px)/.72 Georgia,serif;letter-spacing:-.075em}.hero h1 i{font-weight:400;color:var(--wine)}
+    .hero-lede{max-width:34ch;font:italic clamp(18px,1.6vw,26px)/1.45 Georgia,serif;color:#4b4246}.hero-foot{display:flex;align-items:end;justify-content:space-between;gap:26px;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.hero-foot span{max-width:26ch;line-height:1.6}
+    .hero-art{position:relative;min-height:100svh;background:#e8e2d8;cursor:grab;touch-action:pan-y}.hero-art:active{cursor:grabbing}.hero-art img{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;transition:transform .18s linear;will-change:transform}.hero-art::after{content:"";position:absolute;inset:0;border:clamp(12px,2vw,32px) solid var(--ivory);border-left:0;pointer-events:none}
+    .orbit-label{position:absolute;z-index:2;right:clamp(28px,4vw,68px);bottom:100px;width:118px;height:118px;border-radius:50%;display:grid;place-items:center;text-align:center;background:rgba(242,238,231,.84);border:1px solid var(--wine);font-size:9px;line-height:1.6;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(10px)}.orbit-label::after{content:"↔";display:block;font-size:20px;letter-spacing:0}
+    .chapter{display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}.chapter.reverse .visual{order:2}.chapter.reverse .chapter-copy{order:1;background:var(--wine);color:white}
+    .visual{position:relative;min-height:100svh;overflow:hidden}.visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}.visual:hover img{transform:scale(1.025)}
+    .chapter-copy{padding:120px var(--pad);display:flex;flex-direction:column;justify-content:center;background:#ded0d5}.chapter-copy .number{font:italic clamp(54px,9vw,148px)/.7 Georgia,serif;color:var(--wine);opacity:.9}.reverse .chapter-copy .number{color:#e1acb8}
+    .chapter-copy h2{font:400 clamp(52px,7.2vw,116px)/.78 Georgia,serif;letter-spacing:-.065em;margin:48px 0 30px}.chapter-copy h2 i{font-weight:400}.chapter-copy p{max-width:43ch;line-height:1.75;font-size:14px;color:#4f4549}.reverse .chapter-copy p{color:#eadde1}
+    .note{margin-top:42px;padding-top:18px;border-top:1px solid currentColor;display:flex;justify-content:space-between;gap:20px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;opacity:.7}
+    .rituals{background:#161113;color:white;padding:130px var(--pad) 150px}.rituals-head{display:grid;grid-template-columns:.65fr 1fr;gap:8vw;align-items:end}.rituals h2{font:400 clamp(58px,9vw,152px)/.76 Georgia,serif;letter-spacing:-.07em;margin:0}.rituals h2 i{color:#c1a7bd;font-weight:400}.rituals-head p{font:italic clamp(19px,2vw,30px)/1.45 Georgia,serif;max-width:28ch;color:#d6cbd0}
+    .moods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.2);margin-top:90px;border:1px solid rgba(255,255,255,.2)}.mood{min-height:52vh;padding:28px;background:#161113;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;cursor:pointer;border:0;text-align:left}.mood::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),var(--tone),transparent 45%);opacity:.65;transition:.55s}.mood:hover::before,.mood.active::before{opacity:1;transform:scale(1.12)}.mood>*{position:relative}.mood small{font-size:9px;letter-spacing:.18em;text-transform:uppercase}.mood strong{font:italic clamp(38px,5vw,76px)/.9 Georgia,serif}.mood p{font-size:12px;line-height:1.6;color:#cfc4c8;max-width:28ch}.mood:nth-child(1){--tone:rgba(233,184,142,.35)}.mood:nth-child(2){--tone:rgba(141,113,137,.45)}.mood:nth-child(3){--tone:rgba(82,32,48,.75)}
+    .collection{background:var(--ivory);color:var(--ink);padding:120px var(--pad) 150px}.collection-top{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:70px}.collection h2{font:400 clamp(54px,8vw,126px)/.78 Georgia,serif;letter-spacing:-.07em;margin:0}.collection-top p{max-width:34ch;line-height:1.6}
+    .product-strip{display:grid;grid-template-columns:1.15fr .85fr 1fr;gap:16px}.product{position:relative;min-height:560px;overflow:hidden;background:#ddd}.product:nth-child(2){margin-top:95px}.product img{width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:transform .8s var(--ease)}.product:hover img{transform:scale(1.04)}.product::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(18,13,15,.84))}.product-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:25px;color:white}.product-copy small{font-size:9px;letter-spacing:.17em;text-transform:uppercase}.product-copy h3{font:400 clamp(28px,3vw,44px) Georgia,serif;margin:9px 0}.product-copy p{font-size:12px;color:#e4dce0}
+    .close{background:var(--wine);color:white;padding:120px var(--pad) 160px;min-height:90svh;display:flex;flex-direction:column;justify-content:space-between}.close h2{font:400 clamp(60px,11vw,180px)/.72 Georgia,serif;letter-spacing:-.075em;margin:0}.close h2 i{font-weight:400;color:#dab4c0}.close-bottom{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:end}.close p{font:italic clamp(18px,2vw,29px)/1.5 Georgia,serif;max-width:33ch}.cta{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;min-height:64px;padding:0 24px;border:1px solid currentColor;text-transform:uppercase;font-size:10px;letter-spacing:.16em;transition:.3s}.cta:hover{background:white;color:var(--wine)}
+    .reveal{opacity:0;transform:translateY(24px);transition:.85s var(--ease)}.reveal.seen{opacity:1;transform:none}
+    @media(max-width:900px){.hero,.chapter,.rituals-head{grid-template-columns:1fr}.hero-copy{min-height:72svh;padding-bottom:80px}.hero-art{min-height:72svh}.chapter.reverse .visual,.chapter.reverse .chapter-copy{order:initial}.chapter-copy{min-height:72svh}.visual{min-height:72svh}.moods{grid-template-columns:1fr}.mood{min-height:38vh}.product-strip{grid-template-columns:1fr 1fr}.product:last-child{grid-column:1/-1}.product:nth-child(2){margin-top:0}.collection-top,.close-bottom{display:grid;grid-template-columns:1fr}.rail{height:58px}.rail a{font-size:8px}.edition{display:none}}
+    @media(max-width:560px){.mark{top:18px}.hero h1{font-size:24vw}.hero-copy{padding-top:100px}.hero-art{min-height:64svh}.orbit-label{bottom:78px;width:94px;height:94px}.chapter-copy{padding-top:90px;padding-bottom:100px}.chapter-copy h2{font-size:19vw}.visual{min-height:60svh}.rituals{padding-top:95px}.rituals-head p{margin-top:45px}.product-strip{grid-template-columns:1fr}.product,.product:last-child{grid-column:auto;min-height:62svh}.close h2{font-size:24vw}.rail b{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.hero-art img{transform:none!important}}
+  </style>
+</head>
+<body>
+  <a class="mark" href="#opening" aria-label="EIRRA home">eirra</a><div class="edition">Objects of quiet · concept edition 01</div>
+  <nav class="rail" aria-label="Ritual navigation"><a class="active" href="#opening"><b>01</b> Opening</a><a href="#dawn"><b>02</b> Dawn</a><a href="#night"><b>03</b> Night</a><a href="#collection"><b>04</b> Objects</a></nav>
+  <main>
+    <section class="spread hero" id="opening" data-section>
+      <div class="hero-copy"><div><div class="overline">Botanical objects for private rituals</div><h1>Objects<br>of <i>quiet.</i></h1><p class="hero-lede">A collection imagined around light, touch and the moments we keep for ourselves.</p></div><div class="hero-foot"><span>01 / Editorial concept<br>Art-directed imagery</span><span>Scroll to enter<br>Drag the image to shift its orbit ↓</span></div></div>
+      <div class="hero-art" id="conceptOrbit" aria-label="Interactive concept orbit. Drag horizontally to shift the product scene."><img src="assets/eirra-editorial-hero-v1.webp" alt="Amber botanical vessels floating above travertine and chrome"><div class="orbit-label">Interactive<br>concept orbit</div></div>
+    </section>
+    <section class="spread chapter" id="dawn" data-section>
+      <div class="visual"><img src="assets/eirra-ritual-flatlay-v3.webp" alt="Editorial morning ritual objects on a pale surface"></div>
+      <div class="chapter-copy"><div class="number">01</div><h2 class="reveal">The first light is a <i>material.</i></h2><p class="reveal">Dawn is composed as a clear editorial spread: cool stone, warm glass, one deliberate gesture. Product details and legal copy remain separate from the atmosphere.</p><div class="note"><span>Dawn / 06:40</span><span>Visual ritual · concept</span></div></div>
+    </section>
+    <section class="spread chapter reverse" id="night" data-section>
+      <div class="visual"><img src="assets/eirra-provenance-v2.webp" alt="Botanical provenance still life in warm low light"></div>
+      <div class="chapter-copy"><div class="number">02</div><h2 class="reveal">Night falls in <i>layers.</i></h2><p class="reveal">A slower, darker composition makes room for material provenance and a calmer route to the collection — without implying a medical effect.</p><div class="note"><span>Night / 21:10</span><span>No health promises</span></div></div>
+    </section>
+    <section class="spread rituals" id="moods" data-section>
+      <div class="rituals-head"><h2 class="reveal">Choose the<br><i>atmosphere.</i></h2><p class="reveal">Three entrances to the same collection. The emotional layer guides the eye; the product layer stays one tap away.</p></div>
+      <div class="moods">
+        <button class="mood active" data-mood="Dawn"><small>06:40 / Light</small><strong>Dawn</strong><p>Alabaster, amber and a clean edge of sunlight.</p></button>
+        <button class="mood" data-mood="Pause"><small>15:20 / Still</small><strong>Pause</strong><p>Chrome reflection, smoked plum and the space between tasks.</p></button>
+        <button class="mood" data-mood="Night"><small>21:10 / Low</small><strong>Night</strong><p>Oxblood fabric, warm glass and a quieter room.</p></button>
+      </div>
+    </section>
+    <section class="spread collection" id="collection" data-section>
+      <div class="collection-top reveal"><h2>The<br>objects.</h2><p>A gallery structure for the final catalogue. Names, formulas, prices and availability remain owner-controlled fields.</p></div>
+      <div class="product-strip">
+        <article class="product reveal"><img src="assets/eirra-core-collection.webp" alt="EIRRA core collection concept"><div class="product-copy"><small>Collection / 01</small><h3>Core objects</h3><p>[do uzupełnienia przez Marka: products & variants]</p></div></article>
+        <article class="product reveal"><img src="assets/eirra-skin-collection.webp" alt="EIRRA skin collection concept"><div class="product-copy"><small>Collection / 02</small><h3>Skin objects</h3><p>[do uzupełnienia przez Marka: products & variants]</p></div></article>
+        <article class="product reveal"><img src="assets/eirra-provenance-v2.webp" alt="Botanical material story"><div class="product-copy"><small>Journal / 03</small><h3>Material notes</h3><p>Origin stories linked only to verified sources.</p></div></article>
+      </div>
+    </section>
+    <section class="spread close" id="contact" data-section><h2 class="reveal">Make room<br>for <i>quiet.</i></h2><div class="close-bottom reveal"><p>A premium commerce concept with a visual language of its own — ready for confirmed products, legal content and final photography.</p><span class="cta">Private list [owner input] <span>↗</span></span></div></section>
+  </main>
+  <script>
+    const orbit=document.querySelector('#conceptOrbit'),img=orbit.querySelector('img');let down=false,start=0,x=0;
+    const render=()=>img.style.transform=`translate3d(${x*.04}px,${Math.sin(x/55)*9}px,0) scale(1.08) rotate(${x*.012}deg)`;
+    orbit.addEventListener('pointerdown',e=>{down=true;start=e.clientX-x;orbit.setPointerCapture(e.pointerId)});orbit.addEventListener('pointermove',e=>{if(!down)return;x=Math.max(-210,Math.min(210,e.clientX-start));render()});orbit.addEventListener('pointerup',()=>down=false);orbit.addEventListener('pointercancel',()=>down=false);
+    document.querySelectorAll('.mood').forEach(m=>m.addEventListener('pointermove',e=>{const r=m.getBoundingClientRect();m.style.setProperty('--x',`${e.clientX-r.left}px`);m.style.setProperty('--y',`${e.clientY-r.top}px`)}));
+    document.querySelectorAll('.mood').forEach(m=>m.addEventListener('click',()=>{document.querySelectorAll('.mood').forEach(x=>x.classList.toggle('active',x===m));document.querySelector('.edition').textContent=`${m.dataset.mood} atmosphere · concept edition 01`}));
+    const reveal=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('seen')}),{threshold:.15});document.querySelectorAll('.reveal').forEach(x=>reveal.observe(x));
+    const secs=[...document.querySelectorAll('[data-section]')],links=[...document.querySelectorAll('.rail a')];new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;let idx=id==='opening'?0:id==='dawn'?1:id==='night'?2:3;links.forEach((l,i)=>l.classList.toggle('active',i===idx))}}),{threshold:.42}).observe(secs[0]);secs.slice(1).forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=s.id;let idx=id==='dawn'?1:id==='night'?2:id==='opening'?0:3;links.forEach((l,i)=>l.classList.toggle('active',i===idx))}}),{threshold:.42}).observe(s));
+  </script>
+</body>
+</html>

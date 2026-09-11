@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07180f">
+  <meta name="description" content="BIOLEAFHUB Material Atlas — premium B2B CBD concept demo.">
+  <title>BIOLEAFHUB — Material Atlas</title>
+  <style>
+    :root {
+      --ink:#07180f; --ink-2:#0c2519; --mineral:#eee9dd; --paper:#f7f4ec;
+      --brass:#c9a96a; --cyan:#77d8c6; --muted:#94a398; --line:rgba(238,233,221,.2);
+      --pad:clamp(20px,4vw,68px); --ease:cubic-bezier(.22,.82,.24,1);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth;background:var(--ink)}
+    body{margin:0;color:var(--mineral);background:var(--ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+    button,a{font:inherit} a{color:inherit;text-decoration:none} button{color:inherit}
+    :focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.055;z-index:30;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+    .topbar{position:fixed;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);z-index:20;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(7,24,15,.9),rgba(7,24,15,.25));backdrop-filter:blur(14px)}
+    .brand{font-family:Georgia,serif;font-size:19px;letter-spacing:.08em}.brand span{color:var(--brass)}
+    .top-meta{display:flex;align-items:center;gap:24px;color:#c8d1c9;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+    .top-meta i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+    .top-cta{border:1px solid rgba(201,169,106,.55);padding:12px 17px;transition:.3s var(--ease)}
+    .top-cta:hover{background:var(--brass);color:var(--ink)}
+    .rail{position:fixed;left:0;top:76px;bottom:0;width:62px;z-index:19;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(7,24,15,.65);backdrop-filter:blur(12px)}
+    .rail a{position:relative;width:100%;height:62px;display:grid;place-items:center;color:#7d9183;font-size:10px;letter-spacing:.1em;transition:.3s}
+    .rail a::after{content:"";position:absolute;right:-1px;width:2px;height:0;background:var(--cyan);transition:.3s}
+    .rail a:hover,.rail a.active{color:var(--mineral)}.rail a.active::after{height:26px}
+    main{margin-left:62px}.screen{min-height:100svh;position:relative;isolation:isolate}
+    .hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(360px,.65fr);padding-top:76px;overflow:hidden}
+    .hero-media{position:relative;min-height:calc(100svh - 76px);overflow:hidden;background:#05120b;cursor:grab;touch-action:pan-y}
+    .hero-media:active{cursor:grabbing}.hero-image{position:absolute;inset:-5%;background:url('assets/bioleafhub-lab-hero-v1.webp') center/cover no-repeat;transform:scale(1.04);transition:transform .2s ease-out;will-change:transform}
+    .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,24,15,.08),transparent 48%,rgba(7,24,15,.6)),linear-gradient(0deg,rgba(7,24,15,.78),transparent 35%)}
+    .hero-title{position:absolute;left:var(--pad);right:7%;bottom:8%;z-index:3}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--cyan);font-size:10px;letter-spacing:.22em;text-transform:uppercase}.eyebrow::before{content:"";width:34px;height:1px;background:currentColor}
+    h1,h2,h3,p{margin-top:0}.hero h1{max-width:850px;margin:16px 0 18px;font-family:Georgia,serif;font-weight:400;font-size:clamp(58px,7.8vw,132px);line-height:.78;letter-spacing:-.055em;text-shadow:0 4px 34px #06140d}
+    .hero h1 em{font-weight:400;color:var(--brass)}
+    .hero-lede{max-width:560px;margin:0;color:#d2d9d3;font-size:clamp(15px,1.25vw,19px);line-height:1.6}
+    .drag-note{position:absolute;right:26px;bottom:28px;z-index:3;width:104px;height:104px;border:1px solid rgba(238,233,221,.35);border-radius:50%;display:grid;place-items:center;text-align:center;font-size:9px;letter-spacing:.16em;text-transform:uppercase;line-height:1.5;background:rgba(7,24,15,.35);backdrop-filter:blur(8px)}
+    .hero-panel{padding:clamp(36px,5vw,82px);display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#0b2b1d,#07180f 58%);border-left:1px solid var(--line)}
+    .serial{position:absolute;right:var(--pad);top:112px;color:#688072;font-family:monospace;font-size:10px;line-height:1.8;text-align:right}
+    .hero-panel h2{font:400 clamp(28px,3vw,46px)/1.05 Georgia,serif;margin-bottom:22px}.hero-panel h2 span{color:var(--brass)}
+    .hero-panel p{color:#aebbb2;line-height:1.7;font-size:14px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .process button{background:none;border:0;border-right:1px solid var(--line);padding:18px 8px;text-align:left;cursor:pointer;color:#819287;transition:.3s}.process button:last-child{border:0}.process button.active{color:var(--cyan);background:rgba(119,216,198,.06)}
+    .process b{display:block;margin-bottom:7px;font:400 11px monospace}.process span{font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+    .stage-copy{min-height:92px;margin:24px 0}.stage-copy strong{display:block;color:var(--mineral);font:400 18px Georgia,serif;margin-bottom:8px}.stage-copy small{color:#96a79c;line-height:1.55}
+    .button-row{display:flex;gap:12px;flex-wrap:wrap}.btn{min-height:48px;padding:0 18px;border:1px solid var(--brass);display:inline-flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.13em;text-transform:uppercase}.btn.primary{background:var(--brass);color:var(--ink)}
+    .section-head{display:grid;grid-template-columns:.45fr 1fr;gap:7vw;padding:120px var(--pad) 72px;border-bottom:1px solid var(--line)}
+    .section-head .kicker{font:11px monospace;color:var(--cyan);text-transform:uppercase;letter-spacing:.16em}
+    .section-head h2{font:400 clamp(42px,6.2vw,98px)/.94 Georgia,serif;letter-spacing:-.045em;max-width:1000px}.section-head h2 i{color:var(--brass);font-weight:400}
+    .materials{background:var(--paper);color:var(--ink);padding-bottom:120px}.materials .section-head{border-color:rgba(7,24,15,.16)}
+    .materials .section-head .kicker{color:#187267}.materials .section-head h2 i{color:#8c6a31}
+    .material-grid{display:grid;grid-template-columns:1.1fr .8fr .8fr;gap:12px;padding:0 var(--pad)}
+    .material-card{position:relative;min-height:520px;overflow:hidden;background:#d8d5cc}.material-card:nth-child(2){margin-top:72px}.material-card:nth-child(3){margin-top:144px}
+    .material-card img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);filter:saturate(.78)}.material-card:hover img{transform:scale(1.035)}
+    .material-card::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(4,14,9,.86))}
+    .card-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:24px;color:white}.card-copy small{font:10px monospace;color:var(--cyan)}.card-copy h3{font:400 clamp(25px,2.5vw,38px) Georgia,serif;margin:10px 0}.card-copy p{font-size:13px;color:#cfdbd3;line-height:1.55;max-width:38ch}
+    .proof{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;background:#091d14}
+    .proof-visual{position:sticky;top:76px;height:calc(100svh - 76px);background:url('assets/studio-dark.jpg') center/cover no-repeat}.proof-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(7,24,15,.76)),linear-gradient(0deg,rgba(7,24,15,.45),transparent)}
+    .orbit{position:absolute;inset:0;display:grid;place-items:center}.orbit-ring{width:min(58vw,520px);aspect-ratio:1;border:1px solid rgba(119,216,198,.38);border-radius:50%;box-shadow:0 0 90px rgba(119,216,198,.08);animation:spin 24s linear infinite}.orbit-ring::before,.orbit-ring::after{content:"";position:absolute;border:1px solid rgba(201,169,106,.28);border-radius:50%;inset:12%}.orbit-ring::after{inset:32%;background:radial-gradient(circle,rgba(119,216,198,.24),transparent 65%)}
+    .proof-copy{padding:120px var(--pad);align-self:center}.proof-copy h2{font:400 clamp(44px,5.8vw,88px)/.9 Georgia,serif;letter-spacing:-.045em}.proof-copy>p{color:#a8b6ad;line-height:1.75;max-width:580px}
+    .evidence{margin-top:50px;border-top:1px solid var(--line)}.evidence article{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+    .evidence b{font:11px monospace;color:var(--cyan)}.evidence strong{font:400 18px Georgia,serif}.evidence span{font-size:10px;color:#839489;text-transform:uppercase;letter-spacing:.12em;text-align:right}
+    .placeholder{margin-top:28px;padding:16px;border:1px dashed rgba(201,169,106,.45);color:#baa77e;font:11px/1.55 monospace}
+    .partner{min-height:84svh;padding:120px var(--pad);display:flex;flex-direction:column;justify-content:space-between;background:var(--brass);color:var(--ink)}
+    .partner h2{font:400 clamp(54px,9vw,150px)/.82 Georgia,serif;letter-spacing:-.06em;max-width:1200px}.partner-bottom{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:end}.partner p{max-width:520px;font-size:18px;line-height:1.6}.partner .btn{border-color:var(--ink)}
+    footer{margin-left:62px;padding:24px var(--pad);background:#030c07;color:#718077;display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+    [data-reveal]{opacity:0;transform:translateY(26px);transition:.8s var(--ease)}[data-reveal].seen{opacity:1;transform:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:900px){.rail{display:none}main,footer{margin-left:0}.top-meta>span{display:none}.hero{grid-template-columns:1fr}.hero-media{min-height:78svh}.hero-panel{min-height:68svh}.serial{position:static;margin-bottom:auto}.section-head,.proof,.partner-bottom{grid-template-columns:1fr}.material-grid{grid-template-columns:1fr}.material-card,.material-card:nth-child(n){margin-top:0;min-height:68svh}.proof-visual{position:relative;top:0;height:65svh}.proof-copy{padding-top:72px}.drag-note{width:82px;height:82px}.partner{min-height:90svh}.topbar{height:66px}.hero{padding-top:66px}}
+    @media(max-width:560px){.top-cta{padding:10px}.brand{font-size:15px}.hero h1{font-size:clamp(55px,18vw,88px)}.hero-title{bottom:5%}.hero-lede{font-size:14px;max-width:74%}.process{grid-template-columns:1fr 1fr}.process button:nth-child(2){border-right:0}.process button:nth-child(-n+2){border-bottom:1px solid var(--line)}.section-head{padding-top:84px}.material-grid{padding:0 12px}.proof-copy,.partner{padding-top:84px;padding-bottom:84px}.evidence article{grid-template-columns:52px 1fr}.evidence span{grid-column:2;text-align:left}.partner h2{font-size:20vw}footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.hero-image{transform:none!important}}
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#origin" aria-label="BIOLEAFHUB home">BIOLEAF<span>HUB</span></a>
+    <div class="top-meta"><i></i><span>Private label · European partner concept</span><a class="top-cta" href="#partner">Start a project</a></div>
+  </header>
+  <nav class="rail" aria-label="Page chapters">
+    <a class="active" href="#origin" aria-label="Origin">01</a><a href="#materials" aria-label="Materials">02</a><a href="#proof" aria-label="Proof">03</a><a href="#partner" aria-label="Partner">04</a>
+  </nav>
+  <main>
+    <section class="screen hero" id="origin" data-section="01">
+      <div class="hero-media" id="materialStage" aria-label="Interactive concept view of the botanical laboratory. Drag to shift perspective.">
+        <div class="hero-image"></div>
+        <div class="hero-title">
+          <div class="eyebrow">Material Atlas / 01</div>
+          <h1>Botanical<br><em>precision.</em></h1>
+          <p class="hero-lede">A private-label world built like a material archive: origin, extraction and form — made legible for the partner.</p>
+        </div>
+        <div class="drag-note">Drag to<br>inspect<br>concept</div>
+      </div>
+      <aside class="hero-panel">
+        <div class="serial">ATLAS / 2026<br>DEMO EDITION<br>VISUAL CONCEPT</div>
+        <h2>One route from field to <span>finished form.</span></h2>
+        <p>Select a chapter of the batch journey. This orbit explains the proposed experience; final claims and production parameters require owner confirmation.</p>
+        <div class="process" role="tablist" aria-label="Batch journey">
+          <button class="active" role="tab" aria-selected="true" data-stage="0"><b>01</b><span>Field</span></button>
+          <button role="tab" aria-selected="false" data-stage="1"><b>02</b><span>Extract</span></button>
+          <button role="tab" aria-selected="false" data-stage="2"><b>03</b><span>Form</span></button>
+          <button role="tab" aria-selected="false" data-stage="3"><b>04</b><span>Partner</span></button>
+        </div>
+        <div class="stage-copy" aria-live="polite"><strong id="stageTitle">Start with the source.</strong><small id="stageText">A visual provenance chapter that can later connect to verified crops, batches and documentation.</small></div>
+        <div class="button-row"><a class="btn primary" href="#materials">Open the atlas</a><a class="btn" href="#proof">View proof model</a></div>
+      </aside>
+    </section>
+
+    <section class="materials" id="materials" data-section="02">
+      <header class="section-head" data-reveal><div class="kicker">02 / Material families</div><h2>Not a catalogue.<br>A system of <i>possibilities.</i></h2></header>
+      <div class="material-grid">
+        <article class="material-card" data-reveal><img src="assets/collection-core.jpg" alt="Amber botanical vessels on a dark studio surface"><div class="card-copy"><small>FORM / 01</small><h3>Core formats</h3><p>Oils, capsules and partner-ready formats presented as a coherent material family.</p></div></article>
+        <article class="material-card" data-reveal><img src="assets/collection-skin.jpg" alt="Minimal botanical skin-care vessels"><div class="card-copy"><small>FORM / 02</small><h3>Skin rituals</h3><p>Texture, vessel and secondary packaging explored as one design decision.</p></div></article>
+        <article class="material-card" data-reveal><img src="assets/studio-dark.jpg" alt="Dark premium product design studio"><div class="card-copy"><small>SERVICE / 03</small><h3>Partner studio</h3><p>A guided route from positioning to a production brief — with facts confirmed before release.</p></div></article>
+      </div>
+    </section>
+
+    <section class="proof" id="proof" data-section="03">
+      <div class="proof-visual"><div class="orbit" aria-hidden="true"><div class="orbit-ring"></div></div></div>
+      <div class="proof-copy" data-reveal><div class="eyebrow">03 / Evidence before ornament</div><h2>A proof layer the buyer can actually read.</h2><p>The final site should connect every meaningful statement to a document, measurement or clearly marked inference. The demo intentionally avoids borrowing competitor claims.</p>
+        <div class="evidence">
+          <article><b>01</b><strong>Origin record</strong><span>Owner input required</span></article>
+          <article><b>02</b><strong>Batch documentation</strong><span>Owner input required</span></article>
+          <article><b>03</b><strong>Formulation route</strong><span>Scope to confirm</span></article>
+          <article><b>04</b><strong>Packaging options</strong><span>Scope to confirm</span></article>
+        </div>
+        <div class="placeholder">[do uzupełnienia przez Marka: certyfikaty, MOQ, lead time, lista formatów, kontakt B2B]</div>
+      </div>
+    </section>
+
+    <section class="partner" id="partner" data-section="04">
+      <div class="kicker">04 / Build together</div><h2 data-reveal>Bring the brief.<br>Leave with a route.</h2>
+      <div class="partner-bottom" data-reveal><p>A cinematic first impression, followed by a practical path for product, evidence and enquiry. This is the premium B2B layer the category usually leaves behind.</p><div class="button-row"><span class="btn">Contact [owner input]</span><a class="btn" href="#origin">Return to origin</a></div></div>
+    </section>
+  </main>
+  <footer><span>BIOLEAFHUB · Premium concept demo</span><span>Art-directed imagery · not production documentation</span></footer>
+  <script>
+    const stages=[
+      ['Start with the source.','A visual provenance chapter that can later connect to verified crops, batches and documentation.'],
+      ['Make the process visible.','Show the extraction route as a calm sequence — without publishing an unverified technical promise.'],
+      ['Shape the finished form.','Compare vessel, texture and secondary packaging in one controlled partner workspace.'],
+      ['Release with evidence.','Move only confirmed parameters into the final brief, label and partner documentation.']
+    ];
+    document.querySelectorAll('[data-stage]').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-stage]').forEach(x=>{x.classList.toggle('active',x===btn);x.setAttribute('aria-selected',x===btn)});
+      const item=stages[+btn.dataset.stage]; document.querySelector('#stageTitle').textContent=item[0];document.querySelector('#stageText').textContent=item[1];
+    }));
+    const stage=document.querySelector('#materialStage'), image=stage.querySelector('.hero-image');
+    let down=false,startX=0,x=0;
+    const paint=()=>image.style.transform=`scale(1.08) translate3d(${x*.025}px,${Math.abs(x)*-.004}px,0)`;
+    stage.addEventListener('pointerdown',e=>{down=true;startX=e.clientX-x;stage.setPointerCapture(e.pointerId)});
+    stage.addEventListener('pointermove',e=>{if(!down)return;x=Math.max(-140,Math.min(140,e.clientX-startX));paint()});
+    stage.addEventListener('pointerup',()=>down=false);stage.addEventListener('pointercancel',()=>down=false);
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('seen')}),{threshold:.14});
+    document.querySelectorAll('[data-reveal]').forEach(el=>observer.observe(el));
+    const sections=[...document.querySelectorAll('[data-section]')], links=[...document.querySelectorAll('.rail a')];
+    new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)links.forEach((l,i)=>l.classList.toggle('active',i===sections.indexOf(e.target)))}),{threshold:.46}).observe(sections[0]);
+    sections.slice(1).forEach(s=>new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)links.forEach((l,i)=>l.classList.toggle('active',i===sections.indexOf(s)))}),{threshold:.46}).observe(s));
+  </script>
+</body>
+</html>

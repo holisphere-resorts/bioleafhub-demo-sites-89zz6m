@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BIOLEAFHUB s.r.o. — EIRRA · CBD B2B</title>
+<meta name="description" content="BIOLEAFHUB s.r.o. (Czechy) — marka EIRRA. White label, hurt, ekstrakty i kosmetyki CBD dla firm w Europie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BIOLEAFHUB / EIRRA — demo v1
+   Paleta i typografia z wizytówki NR 7 v2 (Cinzel + zieleń + złoto)
+   ============================================================ */
+:root{
+  --ink:#07180F;            /* najciemniejsza zieleń, tło wizytówki */
+  --ink-2:#0A2015;          /* sekcje */
+  --ink-3:#0D2A1B;          /* karty */
+  --line:rgba(224,196,126,.22);
+  --gold:#E0C47E;
+  --gold-dim:#C49A46;
+  --ivory:#F1ECDD;
+  --muted:#C3CBBE;
+  --grad-gold:linear-gradient(180deg,#FBF0C4 0%,#EBD48E 26%,#C49A46 50%,#F3DE9F 66%,#A67E2C 100%);
+  --serif:"Cinzel",Cochin,Didot,Georgia,serif;
+  --sans:"Inter","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--ivory);
+  font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--ink)}
+
+/* --- wspólne --- */
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.eyebrow{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+.eyebrow .num{opacity:.55;margin-right:.9em}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.02em;line-height:1.15;margin:0}
+h2{font-size:clamp(28px,4.6vw,46px)}
+h3{font-size:18px;letter-spacing:.06em}
+p{margin:0 0 1em}
+.lead{font-size:clamp(16px,2.1vw,19px);color:var(--muted);max-width:56ch;font-weight:300}
+.gold-text{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold),rgba(224,196,126,.05));border:0;margin:0}
+
+/* --- pasek górny --- */
+header.top{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px var(--pad);
+  background:rgba(7,24,15,0);backdrop-filter:blur(0);
+  transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+header.top.solid{background:rgba(7,24,15,.88);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.brandmark{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.24em;text-decoration:none}
+nav.links{display:flex;gap:26px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+nav.links a{text-decoration:none;color:var(--muted);transition:color .25s}
+nav.links a:hover{color:var(--gold)}
+@media(max-width:900px){nav.links{display:none}}
+.lang{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{
+  appearance:none;border:0;background:transparent;color:var(--muted);
+  font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;
+  padding:7px 13px;cursor:pointer;transition:.25s;
+}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+
+/* --- przyciski --- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:15px 26px;border-radius:2px;text-decoration:none;border:1px solid var(--gold);
+  transition:transform .25s,box-shadow .25s,background .25s,color .25s;
+}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(224,196,126,.6)}
+.btn-ghost{color:var(--gold);background:transparent}
+.btn-ghost:hover{background:rgba(224,196,126,.1);transform:translateY(-2px)}
+.btn .arrow{transition:transform .25s}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* --- HERO --- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-6% 0 -6% 0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-veil{position:absolute;inset:0;z-index:-1;
+  background:
+   radial-gradient(120% 90% at 15% 40%,rgba(7,24,15,.82) 0%,rgba(7,24,15,.55) 45%,rgba(7,24,15,.2) 100%),
+   linear-gradient(180deg,rgba(7,24,15,.75) 0%,rgba(7,24,15,.1) 35%,rgba(7,24,15,.92) 100%);}
+.hero-inner{width:100%;padding-top:96px;padding-bottom:64px}
+.wordmark{font-family:var(--serif);font-weight:700;letter-spacing:.14em;
+  font-size:clamp(34px,8.4vw,86px);line-height:1;margin:0 0 6px;
+  text-shadow:0 6px 26px rgba(0,0,0,.55)}
+.hero .sub{font-family:var(--serif);font-size:clamp(12px,2.2vw,15px);letter-spacing:.52em;color:var(--gold);text-transform:uppercase;margin:0 0 26px}
+.hero h1{font-size:clamp(24px,4.4vw,42px);font-weight:500;max-width:17ch;margin-bottom:20px}
+.hero .lead{margin-bottom:34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-mail{font-size:14px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px}
+.hero-mail:hover{color:var(--gold)}
+.scroll-hint{position:absolute;left:var(--pad);bottom:26px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.scroll-hint i{display:block;width:44px;height:1px;background:var(--gold);transform-origin:left;animation:sweep 2.6s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:scaleX(.3);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+
+/* --- pasek zasad --- */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+.proof .wrap{display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;padding-top:20px;padding-bottom:20px;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.proof span{display:flex;align-items:center;gap:12px}
+.proof span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+
+/* --- sekcje --- */
+section.band{padding:clamp(64px,9vw,120px) 0;position:relative}
+.band-alt{background:var(--ink-2)}
+.sec-head{max-width:62ch;margin-bottom:clamp(34px,5vw,56px)}
+
+/* karty „Co robimy” */
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.card{
+  position:relative;border:1px solid var(--line);background:var(--ink-3);
+  padding:30px 26px 32px;border-radius:3px;overflow:hidden;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s,background .45s;
+}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .45s;
+  background:radial-gradient(120% 90% at 50% 110%,rgba(224,196,126,.18),transparent 60%)}
+.card:hover{transform:translateY(-6px);border-color:rgba(224,196,126,.55)}
+.card:hover::after{opacity:1}
+.card .idx{font-family:var(--serif);font-size:12px;letter-spacing:.24em;color:var(--gold);opacity:.7;display:block;margin-bottom:16px}
+.card h3{margin-bottom:12px}
+.card p{font-size:14.5px;color:var(--muted);margin:0}
+.card ul{margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.card li{padding-left:16px;position:relative;margin-bottom:5px}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;background:var(--gold)}
+
+/* produkty */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tab{
+  appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
+  font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 16px;border-radius:999px;cursor:pointer;transition:.25s;
+}
+.tab:hover{color:var(--gold);border-color:rgba(224,196,126,.5)}
+.tab[aria-selected="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.prod-layout{display:grid;gap:clamp(24px,4vw,48px);grid-template-columns:1.15fr .85fr;align-items:start}
+@media(max-width:860px){.prod-layout{grid-template-columns:1fr}}
+.prod-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.prod{display:flex;justify-content:space-between;gap:18px;align-items:baseline;
+  padding:15px 2px;border-bottom:1px solid rgba(224,196,126,.12);
+  animation:rise .45s ease both}
+.prod .n{font-family:var(--serif);font-size:16px;letter-spacing:.03em}
+.prod .m{font-size:12.5px;color:var(--muted);letter-spacing:.05em;text-align:right;white-space:nowrap}
+@media(max-width:520px){.prod{flex-direction:column;gap:4px}.prod .m{text-align:left}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.prod-figure{position:relative;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--ink-3)}
+.prod-figure img{aspect-ratio:3/2;object-fit:cover;width:100%;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.prod-figure:hover img{transform:scale(1.05)}
+.prod-figure figcaption{padding:14px 18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-top:1px solid var(--line)}
+.note{font-size:13px;color:var(--muted);margin-top:22px;padding-left:16px;border-left:1px solid var(--gold)}
+
+/* dokumenty */
+.docs{display:grid;gap:0;border-top:1px solid var(--line)}
+.doc{display:grid;grid-template-columns:1fr auto;gap:12px 24px;align-items:center;
+  padding:18px 2px;border-bottom:1px solid rgba(224,196,126,.12)}
+.doc .d-name{font-size:15px}
+.doc .d-name small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.ph{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:#FFD9A0;border:1px dashed rgba(255,217,160,.5);background:rgba(255,217,160,.07);
+  padding:6px 12px;border-radius:2px;white-space:nowrap}
+@media(max-width:640px){.doc{grid-template-columns:1fr}.ph{justify-self:start}}
+
+/* dlaczego my */
+.split{display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.split figure{margin:0;position:relative;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.split figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:860px){.split figure img{aspect-ratio:16/10}}
+.why{list-style:none;margin:0;padding:0}
+.why li{padding:18px 0;border-bottom:1px solid rgba(224,196,126,.12)}
+.why strong{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.04em;display:block;margin-bottom:5px}
+.why span{font-size:14px;color:var(--muted)}
+
+/* kontakt */
+.contact{display:grid;gap:clamp(24px,4vw,56px);grid-template-columns:1fr 1fr}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+.ccard{border:1px solid var(--line);background:var(--ink-3);padding:clamp(26px,4vw,40px);border-radius:3px}
+.ccard .who{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700;margin-bottom:4px}
+.ccard .role{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.field{margin-bottom:16px}
+.field .lbl{font-size:10px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.field .val{font-size:15px;word-break:break-word}
+.field .val a{text-decoration:none;border-bottom:1px solid var(--line)}
+.field .val a:hover{color:var(--gold)}
+.legal-grid{display:grid;gap:14px}
+.legal-grid .field{margin:0}
+
+/* stopka */
+footer.foot{border-top:1px solid var(--line);background:var(--ink);padding:44px 0 54px}
+.foot-note{font-size:12.5px;color:var(--muted);max-width:78ch;line-height:1.7}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+  margin-top:26px;padding-top:22px;border-top:1px solid rgba(224,196,126,.12);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* animacje przy scrollu */
+.rev{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rev.in{opacity:1;transform:none}
+.rev.d1{transition-delay:.08s}.rev.d2{transition-delay:.16s}.rev.d3{transition-delay:.24s}.rev.d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){
+  .rev{opacity:1;transform:none;transition:none}
+  .scroll-hint i{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="brandmark gold-text" href="#hero">BIOLEAFHUB</a>
+  <nav class="links">
+    <a href="#uslugi" data-t="nav.services"></a>
+    <a href="#produkty" data-t="nav.products"></a>
+    <a href="#jakosc" data-t="nav.quality"></a>
+    <a href="#dlaczego" data-t="nav.why"></a>
+    <a href="#kontakt" data-t="nav.contact"></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="pl" aria-pressed="true">PL</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"><img src="img/hero-topographic-gold.jpg" alt=""></div>
+  <div class="hero-veil"></div>
+  <div class="wrap hero-inner">
+    <p class="wordmark gold-text rev">BIOLEAFHUB</p>
+    <p class="sub rev d1" data-t="hero.brand"></p>
+    <h1 class="rev d2" data-t="hero.h1"></h1>
+    <p class="lead rev d3" data-t="hero.lead"></p>
+    <div class="hero-cta rev d4">
+      <a class="btn btn-gold" id="waLink" href="#kontakt"><span data-t="cta.talk"></span> <span class="arrow">→</span></a>
+      <a class="hero-mail" href="mailto:bioleafhub.global@gmail.com">bioleafhub.global@gmail.com</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><i></i><span data-t="hero.scroll"></span></div>
+</section>
+
+<div class="proof">
+  <div class="wrap">
+    <span data-t="proof.1"></span>
+    <span data-t="proof.2"></span>
+    <span data-t="proof.3"></span>
+    <span data-t="proof.4"></span>
+  </div>
+</div>
+
+<!-- ===================== CO ROBIMY ===================== -->
+<section class="band" id="uslugi">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow"><span class="num">01</span><span data-t="services.eyebrow"></span></p>
+      <h2 data-t="services.h2"></h2>
+      <p class="lead" style="margin-top:16px" data-t="services.lead"></p>
+    </div>
+    <div class="cards">
+      <article class="card rev">
+        <span class="idx">I</span><h3 data-t="s1.t"></h3><p data-t="s1.p"></p>
+        <ul><li data-t="s1.l1"></li><li data-t="s1.l2"></li><li data-t="s1.l3"></li></ul>
+      </article>
+      <article class="card rev d1">
+        <span class="idx">II</span><h3 data-t="s2.t"></h3><p data-t="s2.p"></p>
+        <ul><li data-t="s2.l1"></li><li data-t="s2.l2"></li><li data-t="s2.l3"></li></ul>
+      </article>
+      <article class="card rev d2">
+        <span class="idx">III</span><h3 data-t="s3.t"></h3><p data-t="s3.p"></p>
+        <ul><li data-t="s3.l1"></li><li data-t="s3.l2"></li><li data-t="s3.l3"></li></ul>
+      </article>
+      <article class="card rev d3">
+        <span class="idx">IV</span><h3 data-t="s4.t"></h3><p data-t="s4.p"></p>
+        <ul><li data-t="s4.l1"></li><li data-t="s4.l2"></li><li data-t="s4.l3"></li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUKTY ===================== -->
+<section class="band band-alt" id="produkty">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow"><span class="num">02</span><span data-t="prod.eyebrow"></span></p>
+      <h2 data-t="prod.h2"></h2>
+      <p class="lead" style="margin-top:16px" data-t="prod.lead"></p>
+    </div>
+    <div class="tabs rev" id="tabs" role="tablist" aria-label="Kategorie"></div>
+    <div class="prod-layout">
+      <div>
+        <div class="prod-list" id="prodList"></div>
+        <p class="note" data-t="prod.note"></p>
+      </div>
+      <figure class="prod-figure rev d1" style="margin:0">
+        <img id="prodImg" src="img/collection-core.jpg" alt="EIRRA — kolekcja produktów">
+        <figcaption id="prodCap"></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JAKOŚĆ I DOKUMENTY ===================== -->
+<section class="band" id="jakosc">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow"><span class="num">03</span><span data-t="doc.eyebrow"></span></p>
+      <h2 data-t="doc.h2"></h2>
+      <p class="lead" style="margin-top:16px" data-t="doc.lead"></p>
+    </div>
+    <div class="docs rev d1" id="docs"></div>
+  </div>
+</section>
+
+<!-- ===================== DLACZEGO MY ===================== -->
+<section class="band band-alt" id="dlaczego">
+  <div class="wrap split">
+    <figure class="rev"><img src="img/studio-dark.jpg" alt="EIRRA — produkty w ciemnej scenerii studyjnej"></figure>
+    <div class="rev d1">
+      <p class="eyebrow"><span class="num">04</span><span data-t="why.eyebrow"></span></p>
+      <h2 data-t="why.h2"></h2>
+      <ul class="why" style="margin-top:26px" id="whyList"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KONTAKT ===================== -->
+<section class="band" id="kontakt">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow"><span class="num">05</span><span data-t="contact.eyebrow"></span></p>
+      <h2 data-t="contact.h2"></h2>
+      <p class="lead" style="margin-top:16px" data-t="contact.lead"></p>
+    </div>
+    <div class="contact">
+      <div class="ccard rev">
+        <div class="who gold-text">Marek Zachara</div>
+        <div class="role" data-t="contact.role"></div>
+        <div class="field">
+          <div class="lbl" data-t="contact.phone"></div>
+          <div class="val"><a id="telLink" href="tel:+420000000000">+420 000 000 000</a> <span class="ph" style="margin-left:8px" data-t="ph.short"></span></div>
+        </div>
+        <div class="field">
+          <div class="lbl">E-mail</div>
+          <div class="val"><a href="mailto:bioleafhub.global@gmail.com">bioleafhub.global@gmail.com</a></div>
+        </div>
+        <div class="field">
+          <div class="lbl">WhatsApp</div>
+          <div class="val"><a id="waLink2" href="https://wa.me/420000000000" target="_blank" rel="noopener">wa.me/420000000000</a> <span class="ph" style="margin-left:8px" data-t="ph.short"></span></div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="lbl" data-t="contact.lang"></div>
+          <div class="val" data-t="contact.langval"></div>
+        </div>
+        <div style="margin-top:28px"><a class="btn btn-gold" id="waLink3" href="https://wa.me/420000000000" target="_blank" rel="noopener"><span data-t="cta.talk"></span> <span class="arrow">→</span></a></div>
+      </div>
+
+      <div class="ccard rev d1">
+        <div class="who" style="font-size:20px;letter-spacing:.1em">BIOLEAFHUB s.r.o.</div>
+        <div class="role" data-t="contact.company"></div>
+        <div class="legal-grid">
+          <div class="field"><div class="lbl" data-t="contact.ico"></div><div class="val">19889267</div></div>
+          <div class="field"><div class="lbl" data-t="contact.addr"></div><div class="val">Dolní Žukov č.ev. 28<br>737 01 Český Těšín<br><span data-t="contact.cz"></span></div></div>
+          <div class="field"><div class="lbl" data-t="contact.form"></div><div class="val" data-t="contact.formval"></div></div>
+          <div class="field"><div class="lbl" data-t="contact.vat"></div><div class="val"><span class="ph" data-t="ph.long"></span></div></div>
+          <div class="field"><div class="lbl" data-t="contact.web"></div><div class="val">www.bioleafhub.com <span class="ph" style="margin-left:6px" data-t="ph.domain"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-note" data-t="foot.legal"></p>
+    <div class="foot-bottom">
+      <span>© 2026 BIOLEAFHUB s.r.o.</span>
+      <span data-t="foot.brand"></span>
+      <span data-t="foot.demo"></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1. TEKSTY — PL i EN w jednym pliku
+   ============================================================ */
+const T = {
+pl:{
+ "nav.services":"Co robimy","nav.products":"Produkty","nav.quality":"Jakość","nav.why":"Dlaczego my","nav.contact":"Kontakt",
+ "hero.brand":"Marka EIRRA · Czechy · Unia Europejska",
+ "hero.h1":"Konopie i CBD dla firm — z Czech, dla całej Europy.",
+ "hero.lead":"BIOLEAFHUB s.r.o. to partner B2B: produkcja pod Twoją marką (white label), sprzedaż hurtowa gotowej marki EIRRA, ekstrakty i surowce oraz kosmetyki z CBD. Rozmawiamy po polsku, czesku i angielsku.",
+ "hero.scroll":"Przewiń",
+ "cta.talk":"Porozmawiajmy",
+ "proof.1":"Spółka czeska, rynek UE","proof.2":"White label i hurt","proof.3":"Kosmetyki i produkty doustne","proof.4":"Dokumentacja na życzenie",
+
+ "services.eyebrow":"Co robimy","services.h2":"Cztery sposoby na współpracę.",
+ "services.lead":"Nie sprzedajemy pojedynczym sklepom. Pracujemy z hurtowniami, dystrybutorami, markami bez własnej produkcji, firmami kosmetycznymi i sieciami z centralnym zakupem.",
+ "s1.t":"White label / private label","s1.p":"Produkujemy pod Twoją marką: formuła, produkcja, opakowanie, dokumentacja.",
+ "s1.l1":"Oleje, kapsułki, żelki, balsamy, kremy","s1.l2":"Małe i średnie serie","s1.l3":"MOQ i czas realizacji — [do uzupełnienia przez Marka]",
+ "s2.t":"Hurt — gotowa marka EIRRA","s2.p":"Cały katalog EIRRA do odsprzedaży, z marżą dystrybutora.",
+ "s2.l1":"Materiały PL / EN / DE","s2.l2":"Wyłączność regionalna tylko z minimum zakupowym","s2.l3":"Cennik ex-works — [do uzupełnienia przez Marka]",
+ "s3.t":"Ekstrakty i surowce","s3.p":"Współpraca z producentami i laboratoriami: wzajemne dostawy i produkcja nadwyżek.",
+ "s3.l1":"Izolat, broad spectrum, full spectrum","s3.l2":"Wspólne oferty dla dużych klientów","s3.l3":"Specyfikacje i dostępność — [do uzupełnienia przez Marka]",
+ "s4.t":"Kosmetyki z CBD","s4.p":"Najprostsza ścieżka wejścia na większość rynków europejskich — produkty na skórę.",
+ "s4.l1":"Twarz, ciało, kąpiel","s4.l2":"Dokumentacja kosmetyczna (PIF / CPSR / CPNP)","s4.l3":"Osoba odpowiedzialna — [do uzupełnienia przez Marka]",
+
+ "prod.eyebrow":"Produkty","prod.h2":"Katalog marki EIRRA.",
+ "prod.lead":"Poniżej kategorie i pozycje z projektu marki EIRRA. To katalog wyjściowy — asortyment na konkretny rynek zawsze ustalamy osobno.",
+ "prod.note":"Dostępność, ceny B2B, MOQ i to, które pozycje są dziś fizycznie na magazynie — potwierdza Marek Zachara. Część formatów jest dopuszczona tylko w wybranych krajach.",
+
+ "doc.eyebrow":"Jakość i dokumenty","doc.h2":"Papiery przed rozmową o cenie.",
+ "doc.lead":"Każda hurtownia i każdy dystrybutor zapyta o te same dokumenty. Poniżej lista, którą kompletujemy — pola wypełnia Marek, my nie wpisujemy niczego „na oko”.",
+
+ "why.eyebrow":"Dlaczego my","why.h2":"Krótko: blisko, elastycznie, z papierami.",
+
+ "contact.eyebrow":"Kontakt","contact.h2":"Zadzwoń albo napisz — odpowiadamy tego samego dnia.",
+ "contact.lead":"Najszybciej: telefon lub WhatsApp do Marka. E-mail działa równie dobrze, jeśli chcesz od razu przesłać zapytanie ofertowe.",
+ "contact.role":"Założyciel / Dyrektor sprzedaży",
+ "contact.phone":"Telefon","contact.lang":"Języki","contact.langval":"polski · czeski · angielski",
+ "contact.company":"Dane rejestrowe",
+ "contact.ico":"IČO (numer firmy)","contact.addr":"Adres","contact.cz":"Republika Czeska",
+ "contact.form":"Forma prawna","contact.formval":"Společnost s ručením omezeným (sp. z o.o.), sąd rejestrowy w Ostrawie, C 94146",
+ "contact.vat":"VAT / DIČ","contact.web":"Strona",
+ "ph.short":"[numer do uzupełnienia]","ph.long":"[do uzupełnienia przez Marka]","ph.domain":"[domena w trakcie przedłużenia]",
+
+ "foot.legal":"Strona informacyjna dla klientów biznesowych (B2B). Nie przypisujemy produktom żadnych właściwości leczniczych ani zdrowotnych — produkty z CBD nie są lekami i nie służą do leczenia, łagodzenia ani zapobiegania chorobom. Skład, dopuszczalne formaty, kanały sprzedaży i status prawny CBD różnią się w poszczególnych krajach; asortyment dla danego rynku potwierdzamy indywidualnie przed każdą dostawą. Treść strony ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu przepisów prawa.",
+ "foot.brand":"Marka EIRRA","foot.demo":"Demo v1 · wersja robocza"
+},
+en:{
+ "nav.services":"What we do","nav.products":"Products","nav.quality":"Quality","nav.why":"Why us","nav.contact":"Contact",
+ "hero.brand":"EIRRA brand · Czech Republic · European Union",
+ "hero.h1":"Hemp and CBD for business — from Czechia, across Europe.",
+ "hero.lead":"BIOLEAFHUB s.r.o. is a B2B partner: contract manufacturing under your own brand (white label), wholesale of the ready EIRRA brand, extracts and raw materials, and CBD cosmetics. We speak Polish, Czech and English.",
+ "hero.scroll":"Scroll",
+ "cta.talk":"Let's talk",
+ "proof.1":"Czech company, EU market","proof.2":"White label and wholesale","proof.3":"Cosmetics and ingestibles","proof.4":"Documentation on request",
+
+ "services.eyebrow":"What we do","services.h2":"Four ways to work together.",
+ "services.lead":"We do not sell to single shops. We work with wholesalers, distributors, brands without their own production, cosmetics companies and retail chains with central purchasing.",
+ "s1.t":"White label / private label","s1.p":"We manufacture under your brand: formula, production, packaging, documentation.",
+ "s1.l1":"Oils, capsules, gummies, balms, creams","s1.l2":"Small and medium production runs","s1.l3":"MOQ and lead time — [to be confirmed by Marek]",
+ "s2.t":"Wholesale — the EIRRA brand","s2.p":"The full EIRRA catalogue for resale, with a distributor margin.",
+ "s2.l1":"Materials in PL / EN / DE","s2.l2":"Regional exclusivity only with a purchase minimum","s2.l3":"Ex-works price list — [to be confirmed by Marek]",
+ "s3.t":"Extracts and raw materials","s3.p":"Cooperation with manufacturers and laboratories: cross-supply and surplus production.",
+ "s3.l1":"Isolate, broad spectrum, full spectrum","s3.l2":"Joint offers for large accounts","s3.l3":"Specifications and availability — [to be confirmed by Marek]",
+ "s4.t":"CBD cosmetics","s4.p":"The simplest route into most European markets — topical products.",
+ "s4.l1":"Face, body, bath","s4.l2":"Cosmetic documentation (PIF / CPSR / CPNP)","s4.l3":"Responsible Person — [to be confirmed by Marek]",
+
+ "prod.eyebrow":"Products","prod.h2":"The EIRRA catalogue.",
+ "prod.lead":"Below are the categories and items from the EIRRA brand project. This is the starting catalogue — the assortment for a specific market is always agreed separately.",
+ "prod.note":"Availability, B2B prices, MOQ and which items are physically in stock today are confirmed by Marek Zachara. Some formats are permitted only in selected countries.",
+
+ "doc.eyebrow":"Quality and documents","doc.h2":"Paperwork before the price talk.",
+ "doc.lead":"Every wholesaler and every distributor asks for the same documents. Below is the list we are completing — the fields are filled in by Marek; we do not guess anything.",
+
+ "why.eyebrow":"Why us","why.h2":"In short: close by, flexible, with paperwork.",
+
+ "contact.eyebrow":"Contact","contact.h2":"Call or write — we answer the same day.",
+ "contact.lead":"Fastest: phone or WhatsApp to Marek. E-mail works just as well if you want to send a request for quotation straight away.",
+ "contact.role":"Founder / Sales Director",
+ "contact.phone":"Phone","contact.lang":"Languages","contact.langval":"Polish · Czech · English",
+ "contact.company":"Registry data",
+ "contact.ico":"Company ID (IČO)","contact.addr":"Address","contact.cz":"Czech Republic",
+ "contact.form":"Legal form","contact.formval":"Společnost s ručením omezeným (limited liability company), Regional Court in Ostrava, C 94146",
+ "contact.vat":"VAT / DIČ","contact.web":"Website",
+ "ph.short":"[number to be added]","ph.long":"[to be confirmed by Marek]","ph.domain":"[domain being renewed]",
+
+ "foot.legal":"An information page for business customers (B2B). We make no medicinal or health claims — CBD products are not medicines and are not intended to treat, relieve or prevent any disease. Composition, permitted formats, sales channels and the legal status of CBD differ from country to country; the assortment for a given market is confirmed individually before every delivery. This page is informational and does not constitute a commercial offer in the legal sense.",
+ "foot.brand":"EIRRA brand","foot.demo":"Demo v1 · working draft"
+}};
+
+/* ============================================================
+   2. KATALOG EIRRA — kategorie i pozycje (z projektu eirra-cbd)
+   ============================================================ */
+const CATS = [
+ {k:"oils",  pl:"Oleje",           en:"Oils",       img:"img/collection-core.jpg", cpl:"EIRRA · kolekcja podstawowa", cen:"EIRRA · core collection"},
+ {k:"caps",  pl:"Kapsułki",        en:"Capsules",   img:"img/collection-core.jpg", cpl:"EIRRA · kolekcja podstawowa", cen:"EIRRA · core collection"},
+ {k:"gum",   pl:"Żelki",           en:"Gummies",    img:"img/collection-core.jpg", cpl:"EIRRA · kolekcja podstawowa", cen:"EIRRA · core collection"},
+ {k:"face",  pl:"Twarz",           en:"Face",       img:"img/collection-skin.jpg", cpl:"EIRRA · kolekcja kosmetyczna", cen:"EIRRA · skin collection"},
+ {k:"body",  pl:"Ciało",           en:"Body",       img:"img/collection-skin.jpg", cpl:"EIRRA · kolekcja kosmetyczna", cen:"EIRRA · skin collection"},
+ {k:"bath",  pl:"Kąpiel",          en:"Bath",       img:"img/collection-skin.jpg", cpl:"EIRRA · kolekcja kosmetyczna", cen:"EIRRA · skin collection"},
+ {k:"pantry",pl:"Spiżarnia",       en:"Pantry",     img:"img/studio-dark.jpg",     cpl:"EIRRA · formaty spożywcze",   cen:"EIRRA · food formats"},
+ {k:"pet",   pl:"Dla zwierząt",    en:"Pet",        img:"img/studio-dark.jpg",     cpl:"EIRRA · linia dla zwierząt",  cen:"EIRRA · companion line"},
+ {k:"intim", pl:"Intymne",         en:"Intimate",   img:"img/collection-skin.jpg", cpl:"EIRRA · kolekcja kosmetyczna", cen:"EIRRA · skin collection"},
+ {k:"reg",   pl:"Tylko wybrane rynki", en:"Selected markets only", img:"img/studio-dark.jpg", cpl:"EIRRA · formaty regionalne", cen:"EIRRA · regional formats"}
+];
+
+const P = [
+ ["oils","Daily 01","Broad spectrum","300 mg · 30 ml"],
+ ["oils","Daily 02","Broad spectrum","600 mg · 30 ml"],
+ ["oils","Balance 03","Full spectrum","1 000 mg · 30 ml"],
+ ["oils","Deep 04","Full spectrum","2 000 mg · 30 ml"],
+ ["oils","Reserve 05","Full spectrum","3 000 mg · 30 ml"],
+ ["oils","Night Botanical","CBD + CBN","1 250 mg · 30 ml"],
+ ["oils","Clear Botanical","CBD + CBG","1 500 mg · 30 ml"],
+ ["oils","Pocket Ritual Mist","Broad spectrum","300 mg · 15 ml"],
+
+ ["caps","Daily Softgels","Broad spectrum","25 mg × 30"],
+ ["caps","High-Strength Softgels","Broad spectrum","50 mg × 30"],
+ ["caps","Evening Capsules","CBD + CBN","30 mg × 30"],
+ ["caps","Day Capsules","CBD + CBG","30 mg × 30"],
+ ["caps","Restore Complex","CBD + kurkuma","30 mg × 30"],
+
+ ["gum","Daily Berry","CBD isolate","25 mg × 30"],
+ ["gum","Still Lemon","CBD + L-teanina","25 mg × 30"],
+ ["gum","Night Plum","CBD + CBN","30 mg × 30"],
+ ["gum","Move Cherry","CBD + wiśnia","25 mg × 30"],
+ ["gum","Clear Yuzu","CBD + CBG","30 mg × 30"],
+ ["gum","Zero Sugar Citrus","CBD isolate","25 mg × 30"],
+
+ ["face","Radiance Concentrate","CBD isolate","500 mg · 30 ml"],
+ ["face","Barrier Cloud Cream","CBD isolate","300 mg · 50 ml"],
+ ["face","Quiet Eye Balm","CBD isolate","150 mg · 15 ml"],
+ ["face","Botanical Face Oil","Broad spectrum","600 mg · 30 ml"],
+ ["face","Conditioning Lip Veil","CBD isolate","50 mg · 4,5 g"],
+
+ ["body","Daily Body Veil","CBD isolate","750 mg · 200 ml"],
+ ["body","Intensive Body Balm","Broad spectrum","1 000 mg · 50 ml"],
+ ["body","Arctic Body Gel","CBD isolate","1 000 mg · 100 ml"],
+ ["body","Ember Body Balm","Broad spectrum","1 000 mg · 50 ml"],
+ ["body","Hand Architecture Cream","CBD isolate","250 mg · 50 ml"],
+ ["body","Overnight Foot Treatment","CBD isolate","500 mg · 75 ml"],
+ ["body","Botanical Massage Oil","Broad spectrum","1 000 mg · 100 ml"],
+
+ ["bath","Mineral Bath Soak","CBD isolate","300 mg · 400 g"],
+ ["bath","Bath Pebbles","CBD isolate","100 mg × 3"],
+ ["bath","Botanical Shower Oil","Broad spectrum","400 mg · 200 ml"],
+ ["bath","Pulse Point Oil","CBD isolate","200 mg · 10 ml"],
+
+ ["pantry","Still Sparkling Water","CBD wodorozpuszczalny","15 mg · 4 szt."],
+ ["pantry","Clear Sparkling Water","CBD + zielona herbata","15 mg · 4 szt."],
+ ["pantry","Ritual Sachets","CBD wodorozpuszczalny","10 mg × 14"],
+ ["pantry","Dark Cacao Bites","CBD isolate","15 mg × 12"],
+ ["pantry","Botanical Honey","Broad spectrum","500 mg · 150 g"],
+
+ ["pet","Companion Dog Drops S","Broad spectrum","300 mg · 30 ml"],
+ ["pet","Companion Dog Drops L","Broad spectrum","600 mg · 30 ml"],
+ ["pet","Soft Companion Chews","CBD isolate","5 mg × 30"],
+ ["pet","Companion Cat Drops","CBD isolate","150 mg · 15 ml"],
+
+ ["intim","Intimacy Body Oil","CBD isolate","300 mg · 30 ml"],
+ ["intim","Private Ritual Melts","CBD isolate","100 mg × 5"],
+
+ ["reg","Alpine CBD Flower","CBD flower","10–15 % · 7 g"],
+ ["reg","Botanical Pre-Rolls","CBD flower","5 × 0,5 g"],
+ ["reg","Ceramic Vape Pod","CBD isolate","500 mg · 1 ml"],
+ ["reg","Reserve Extract","CBD concentrate","80 % · 1 g"]
+];
+
+/* ============================================================
+   3. JAKOŚĆ I DOKUMENTY — same pola, żadnych deklaracji
+   ============================================================ */
+const DOCS = [
+ {pl:["COA — certyfikat analizy","Wyniki z akredytowanego laboratorium dla każdej sprzedawanej partii. Nazwa laboratorium i zakres badań."],
+  en:["COA — certificate of analysis","Results from an accredited laboratory for every sellable batch. Laboratory name and scope of testing."]},
+ {pl:["Certyfikaty zakładu produkcyjnego","GMP · ISO 22716 (kosmetyki) · HACCP · ISO 9001 · certyfikat organic — które mamy i dla którego zakładu."],
+  en:["Manufacturing site certificates","GMP · ISO 22716 (cosmetics) · HACCP · ISO 9001 · organic — which we hold and for which site."]},
+ {pl:["Dokumentacja kosmetyczna","PIF (dokumentacja produktu), CPSR (raport bezpieczeństwa), zgłoszenie CPNP, wskazana osoba odpowiedzialna."],
+  en:["Cosmetic documentation","PIF (product information file), CPSR (safety report), CPNP notification, designated Responsible Person."]},
+ {pl:["Status produktów doustnych","Novel food: czy produkty doustne są objęte wnioskiem / konsorcjum i w których krajach mogą być sprzedawane."],
+  en:["Status of ingestible products","Novel food: whether the ingestibles are covered by an application / consortium, and where they may be sold."]},
+ {pl:["Zawartość THC i zgodność krajowa","Deklarowany poziom THC i potwierdzenie zgodności z prawem kraju odbiorcy przed każdą dostawą."],
+  en:["THC content and national compliance","Declared THC level and confirmation of compliance with the recipient country's law before each delivery."]},
+ {pl:["Ubezpieczenie i warunki handlowe","Ubezpieczenie produktu, Incoterms, terminy płatności, minimum zakupowe, czas realizacji."],
+  en:["Insurance and commercial terms","Product liability insurance, Incoterms, payment terms, purchase minimum, lead time."]}
+];
+
+/* ============================================================
+   4. DLACZEGO MY
+   ============================================================ */
+const WHY = [
+ {pl:["Czechy, czyli środek Europy","Spółka zarejestrowana w Republice Czeskiej (IČO 19889267). Dostawa do Polski, Niemiec, Austrii i na Słowację w jeden–dwa dni."],
+  en:["Czechia — the middle of Europe","A company registered in the Czech Republic (Company ID 19889267). One to two days to Poland, Germany, Austria and Slovakia."]},
+ {pl:["Własna produkcja","Zakład w Czechach [drugi zakład i lokalizacja — do uzupełnienia przez Marka]."],
+  en:["Own production","A site in Czechia [second site and location — to be confirmed by Marek]."]},
+ {pl:["Elastyczne MOQ","Pracujemy także z małymi seriami — dokładne progi (np. 500 / 1 000 / 5 000 szt.) [do uzupełnienia przez Marka]."],
+  en:["Flexible MOQ","We also work with small runs — exact thresholds (e.g. 500 / 1 000 / 5 000 pcs) [to be confirmed by Marek]."]},
+ {pl:["Czas realizacji white label","Cel: od zatwierdzenia projektu do wysyłki [liczba tygodni — do potwierdzenia przez Marka]."],
+  en:["White label lead time","Target: from approved design to shipment [number of weeks — to be confirmed by Marek]."]},
+ {pl:["Dokumentacja po naszej stronie","Bierzemy na siebie papiery, których marka zwykle nie ma — [dokładny zakres do potwierdzenia przez Marka]."],
+  en:["Paperwork on our side","We take on the documentation a brand usually lacks — [exact scope to be confirmed by Marek]."]},
+ {pl:["Jeden partner na region","Wyłączność regionalną dajemy chętnie — zawsze z minimum zakupowym i na czas określony."],
+  en:["One partner per region","We are happy to grant regional exclusivity — always with a purchase minimum and for a fixed term."]}
+];
+
+/* ============================================================
+   5. LOGIKA
+   ============================================================ */
+let lang = "pl", cat = "oils";
+
+function paintText(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(function(el){
+    var v = T[lang][el.getAttribute("data-t")];
+    if(v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+}
+
+function paintTabs(){
+  var box = document.getElementById("tabs");
+  box.innerHTML = "";
+  CATS.forEach(function(c){
+    var b = document.createElement("button");
+    b.className = "tab"; b.type = "button"; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", String(c.k === cat));
+    b.textContent = c[lang];
+    b.addEventListener("click", function(){ cat = c.k; paintTabs(); paintProducts(); });
+    box.appendChild(b);
+  });
+}
+
+function paintProducts(){
+  var list = document.getElementById("prodList");
+  list.innerHTML = "";
+  P.filter(function(p){ return p[0] === cat; }).forEach(function(p, i){
+    var row = document.createElement("div");
+    row.className = "prod";
+    row.style.animationDelay = (i * 0.035) + "s";
+    row.innerHTML = '<span class="n"></span><span class="m"></span>';
+    row.querySelector(".n").textContent = p[1];
+    row.querySelector(".m").textContent = p[2] + "  ·  " + p[3];
+    list.appendChild(row);
+  });
+  var c = CATS.filter(function(x){ return x.k === cat; })[0];
+  var img = document.getElementById("prodImg");
+  if(img.getAttribute("src") !== c.img) img.setAttribute("src", c.img);
+  document.getElementById("prodCap").textContent = (lang === "pl" ? c.cpl : c.cen);
+}
+
+function paintDocs(){
+  var box = document.getElementById("docs");
+  box.innerHTML = "";
+  DOCS.forEach(function(d){
+    var r = document.createElement("div");
+    r.className = "doc";
+    r.innerHTML = '<div class="d-name"><b></b><small></small></div><span class="ph"></span>';
+    r.querySelector("b").textContent = d[lang][0];
+    r.querySelector("small").textContent = d[lang][1];
+    r.querySelector(".ph").textContent = T[lang]["ph.long"];
+    box.appendChild(r);
+  });
+}
+
+function paintWhy(){
+  var box = document.getElementById("whyList");
+  box.innerHTML = "";
+  WHY.forEach(function(w){
+    var li = document.createElement("li");
+    li.innerHTML = "<strong></strong><span></span>";
+    li.querySelector("strong").textContent = w[lang][0];
+    li.querySelector("span").textContent = w[lang][1];
+    box.appendChild(li);
+  });
+}
+
+function render(){ paintText(); paintTabs(); paintProducts(); paintDocs(); paintWhy(); }
+
+document.querySelectorAll(".lang button").forEach(function(b){
+  b.addEventListener("click", function(){ lang = b.dataset.lang; render(); });
+});
+
+render();
+
+/* pasek górny + delikatne pojawianie się przy scrollu.
+   Świadomie bez IntersectionObserver: przy bardzo szybkim przewijaniu
+   potrafi pominąć sekcję i zostawia pustą planszę. */
+var topBar = document.getElementById("top");
+var heroBg = document.getElementById("heroBg");
+var revs = [].slice.call(document.querySelectorAll(".rev"));
+var noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function revealCheck(){
+  var h = window.innerHeight;
+  for(var i = revs.length - 1; i >= 0; i--){
+    var r = revs[i].getBoundingClientRect();
+    if(r.top < h * 0.92){ revs[i].classList.add("in"); revs.splice(i,1); }
+  }
+}
+function onScroll(){
+  topBar.classList.toggle("solid", window.scrollY > 40);
+  if(heroBg && !noMotion && window.scrollY < window.innerHeight){
+    heroBg.style.transform = "translate3d(0," + (window.scrollY * 0.18) + "px,0)";
+  }
+  revealCheck();
+}
+window.addEventListener("scroll", onScroll, {passive:true});
+window.addEventListener("resize", revealCheck, {passive:true});
+window.addEventListener("load", revealCheck);
+onScroll();
+/* obrazy dogrywają się później i przesuwają układ — sprawdź jeszcze raz */
+window.addEventListener("load", function(){ setTimeout(revealCheck, 200); });
+</script>
+</body>
+</html>
