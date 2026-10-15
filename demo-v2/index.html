@@ -612,6 +612,9 @@ form{border:1px solid var(--ink);padding:18px}
           <div class="fld"><label for="f3" data-t="f.email"></label><input id="f3" name="email" type="email"></div>
           <div class="fld"><label for="f4" data-t="f.topic"></label><select id="f4" name="topic"></select></div>
           <div class="fld"><label for="f5" data-t="f.msg"></label><textarea id="f5" name="msg"></textarea></div>
+          <div class="consent" style="display:flex;gap:10px;align-items:flex-start;margin:2px 0 10px"><input id="f6" name="rodo" type="checkbox" required style="margin-top:4px;flex:0 0 auto"><label for="f6" style="font-size:14px;line-height:1.5" data-t="rodo.consent">Zapoznałem/am się z informacją o przetwarzaniu danych osobowych.</label></div>
+          <p class="note" style="margin:0 0 6px" data-t="rodo.clause">Administrator danych: BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czechy, IČO 19889267, bioleafhub.global@gmail.com. Formularz otwiera Twój program pocztowy — wiadomość przechodzi przez Twojego i naszego dostawcę poczty (Google, skrzynka gmail.com). Dane z formularza przetwarzamy tylko po to, by odpowiedzieć na zapytanie i przygotować ofertę (art. 6 ust. 1 lit. b i f RODO). Przechowujemy je do 12 miesięcy od ostatniego kontaktu. Masz prawo dostępu do danych, ich sprostowania, usunięcia, sprzeciwu oraz skargi do organu nadzorczego (ÚOOÚ w Czechach, PUODO w Polsce). Podanie danych jest dobrowolne, ale bez kontaktu nie odpowiemy.</p>
+          <p class="note" style="margin:0 0 14px"><a href="../polityka-prywatnosci.html" data-t="rodo.privacy">Polityka prywatności</a></p>
           <button class="btn" type="submit" style="width:100%;justify-content:center"><span data-t="f.send"></span></button>
           <p class="note" style="margin-top:14px" data-t="f.note"></p>
         </form>
@@ -649,6 +652,7 @@ form{border:1px solid var(--ink);padding:18px}
       <span>IČO 19889267</span>
       <span><a href="tel:+420000000000">+420 000 000 000</a></span>
       <span><a href="mailto:bioleafhub.global@gmail.com">bioleafhub.global@gmail.com</a></span>
+      <span><a href="../polityka-prywatnosci.html" data-t="rodo.privacy">Polityka prywatności</a></span>
       <span data-t="foot.demo"></span>
     </div>
   </div>
@@ -743,6 +747,7 @@ pl:{
  "contact.vat":"VAT / DIČ","contact.web":"Strona",
 
  "f.company":"Firma","f.person":"Osoba kontaktowa","f.email":"E-mail","f.topic":"Czego dotyczy","f.msg":"Wiadomość","f.send":"Przygotuj wiadomość",
+ "rodo.consent":"Zapoznałem/am się z informacją o przetwarzaniu danych osobowych.","rodo.clause":"Administrator danych: BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czechy, IČO 19889267, bioleafhub.global@gmail.com. Formularz otwiera Twój program pocztowy — wiadomość przechodzi przez Twojego i naszego dostawcę poczty (Google, skrzynka gmail.com). Dane z formularza przetwarzamy tylko po to, by odpowiedzieć na zapytanie i przygotować ofertę (art. 6 ust. 1 lit. b i f RODO). Przechowujemy je do 12 miesięcy od ostatniego kontaktu. Masz prawo dostępu do danych, ich sprostowania, usunięcia, sprzeciwu oraz skargi do organu nadzorczego (ÚOOÚ w Czechach, PUODO w Polsce). Podanie danych jest dobrowolne, ale bez kontaktu nie odpowiemy.","rodo.err":"Zaznacz pole potwierdzające zapoznanie się z informacją o danych osobowych.","rodo.privacy":"Polityka prywatności",
  "f.note":"Demo: formularz nie wysyła niczego przez internet. Po kliknięciu otwiera się Twój program pocztowy z gotową treścią — Ty decydujesz, czy wysłać.",
  "f.t1":"White label / produkcja pod moją marką","f.t2":"Hurt gotowej marki EIRRA","f.t3":"Ekstrakty i surowce","f.t4":"Kosmetyki z CBD","f.t5":"Dokumentacja i certyfikaty","f.t6":"Inne",
  "f.subject":"Zapytanie ofertowe B2B — ",
@@ -843,6 +848,7 @@ en:{
  "contact.vat":"VAT / DIČ","contact.web":"Website",
 
  "f.company":"Company","f.person":"Contact person","f.email":"E-mail","f.topic":"Subject","f.msg":"Message","f.send":"Prepare the message",
+ "rodo.consent":"I have read the information on how my personal data is processed.","rodo.clause":"Data controller: BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czech Republic, IČO 19889267, bioleafhub.global@gmail.com. The form opens your own email programme — the message passes through your email provider and ours (Google, a gmail.com mailbox). We use the form data only to answer your enquiry and prepare a quotation (GDPR Art. 6(1)(b) and (f)). We keep it for up to 12 months after the last contact. You have the right to access, rectify and erase your data, to object, and to complain to a supervisory authority (ÚOOÚ in the Czech Republic, UODO in Poland). Providing data is voluntary, but without a contact we cannot reply.","rodo.err":"Please tick the box confirming you have read the personal data information.","rodo.privacy":"Privacy policy",
  "f.note":"Demo: this form sends nothing over the internet. Clicking it opens your own mail programme with the message ready — you decide whether to send it.",
  "f.t1":"White label / manufacturing under my brand","f.t2":"Wholesale of the ready EIRRA brand","f.t3":"Extracts and raw materials","f.t4":"CBD cosmetics","f.t5":"Documentation and certificates","f.t6":"Other",
  "f.subject":"B2B request for quotation — ",
@@ -1379,8 +1385,11 @@ for(var lb=0; lb<langBtns.length; lb++){
 }
 
 /* formularz: bez internetu — składa gotowy list w programie pocztowym */
+document.getElementById("f6").addEventListener("change", function(){ this.setCustomValidity(""); });
 document.getElementById("rfq").addEventListener("submit", function(e){
   e.preventDefault();
+  var rodo = document.getElementById("f6");
+  if(!rodo.checked){ rodo.setCustomValidity(t("rodo.err")); rodo.reportValidity(); rodo.focus(); return; }
   var g = function(id){ return document.getElementById(id).value.trim(); };
   var body =
     t("f.company")+": "+g("f1")+"\n"+

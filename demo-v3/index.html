@@ -663,6 +663,9 @@ footer{background:var(--ink);color:#fff;padding:clamp(38px,4vw,58px) 0 30px}
           <select id="f3" name="model"><option data-t="form.o1"></option><option data-t="form.o2"></option><option data-t="form.o3"></option><option data-t="form.o4"></option></select></div>
         <div class="f-row"><label for="f4" data-t="form.l4"></label><input id="f4" name="contact" type="text" autocomplete="email"></div>
         <div class="f-row"><label for="f5" data-t="form.l5"></label><textarea id="f5" name="msg"></textarea></div>
+        <div class="f-row consent" style="display:flex;gap:10px;align-items:flex-start"><input id="f6" name="rodo" type="checkbox" required style="margin:3px 0 0;flex:0 0 20px;width:20px;height:20px;padding:0"><label for="f6" style="font-size:14px;line-height:1.5;text-transform:none;letter-spacing:0;font-weight:400;color:inherit;margin:0" data-t="rodo.consent">Zapoznałem/am się z informacją o przetwarzaniu danych osobowych.</label></div>
+        <p class="small" style="margin-top:8px;font-size:13px;line-height:1.5;color:var(--ink);opacity:.75" data-t="rodo.clause">Formularz demonstracyjny — dane nie są nigdzie wysyłane ani zapisywane. Gdy napiszesz do nas e-mailem, administratorem danych jest BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czechy, IČO 19889267, bioleafhub.global@gmail.com. Dane z wiadomości przetwarzamy tylko po to, by odpowiedzieć na zapytanie i przygotować ofertę (art. 6 ust. 1 lit. b i f RODO). Przechowujemy je do 12 miesięcy od ostatniego kontaktu. Masz prawo dostępu do danych, ich sprostowania, usunięcia, sprzeciwu oraz skargi do organu nadzorczego (ÚOOÚ w Czechach, PUODO w Polsce). Podanie danych jest dobrowolne, ale bez kontaktu nie odpowiemy.</p>
+        <p class="small" style="margin-top:4px;font-size:13px;color:var(--ink)"><a href="../polityka-prywatnosci.html" data-t="rodo.privacy">Polityka prywatności</a></p>
         <div class="f-send">
           <button class="btn btn-signal" type="submit"><span data-t="form.send"></span> <span class="ar">→</span></button>
           <span class="ph" data-t="ph.form"></span>
@@ -701,6 +704,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(38px,4vw,58px) 0 30px}
     <div class="foot-bottom">
       <span>© 2026 BIOLEAFHUB s.r.o.</span>
       <span data-t="foot.brand"></span>
+      <span><a href="../polityka-prywatnosci.html" data-t="rodo.privacy">Polityka prywatności</a></span>
       <span data-t="foot.demo"></span>
     </div>
   </div>
@@ -815,6 +819,7 @@ pl:{
 
  "ph.short":"[numer do uzupełnienia]","ph.long":"[do uzupełnienia przez Marka]",
  "ph.domain":"[domena w trakcie przedłużenia]","ph.pdf":"[plik PDF do przygotowania]",
+ "rodo.consent":"Zapoznałem/am się z informacją o przetwarzaniu danych osobowych.","rodo.clause":"Formularz demonstracyjny — dane nie są nigdzie wysyłane ani zapisywane. Gdy napiszesz do nas e-mailem, administratorem danych jest BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czechy, IČO 19889267, bioleafhub.global@gmail.com. Dane z wiadomości przetwarzamy tylko po to, by odpowiedzieć na zapytanie i przygotować ofertę (art. 6 ust. 1 lit. b i f RODO). Przechowujemy je do 12 miesięcy od ostatniego kontaktu. Masz prawo dostępu do danych, ich sprostowania, usunięcia, sprzeciwu oraz skargi do organu nadzorczego (ÚOOÚ w Czechach, PUODO w Polsce). Podanie danych jest dobrowolne, ale bez kontaktu nie odpowiemy.","rodo.err":"Zaznacz pole potwierdzające zapoznanie się z informacją o danych osobowych.","rodo.privacy":"Polityka prywatności",
  "ph.form":"[formularz do podłączenia]"
 },
 en:{
@@ -913,6 +918,7 @@ en:{
 
  "ph.short":"[number to be added]","ph.long":"[to be confirmed by Marek]",
  "ph.domain":"[domain being renewed]","ph.pdf":"[PDF file to be prepared]",
+ "rodo.consent":"I have read the information on how my personal data is processed.","rodo.clause":"Demo form — the data is not sent or stored anywhere. When you write to us by email, the data controller is BIOLEAFHUB s.r.o., Dolní Žukov č.ev. 28, 737 01 Český Těšín, Czech Republic, IČO 19889267, bioleafhub.global@gmail.com. We use the data only to answer your enquiry and prepare a quotation (GDPR Art. 6(1)(b) and (f)). We keep it for up to 12 months after the last contact. You have the right to access, rectify and erase your data, to object, and to complain to a supervisory authority (ÚOOÚ in the Czech Republic, UODO in Poland). Providing data is voluntary, but without a contact we cannot reply.","rodo.err":"Please tick the box confirming you have read the personal data information.","rodo.privacy":"Privacy policy",
  "ph.form":"[form to be connected]"
 }};
 
@@ -1347,8 +1353,11 @@ for(var b=0;b<langButtons.length;b++){
   langButtons[b].addEventListener("click", function(){ lang = this.dataset.lang; render(); });
 }
 
+document.getElementById("f6").addEventListener("change", function(){ this.setCustomValidity(""); });
 document.getElementById("rfq").addEventListener("submit", function(e){
   e.preventDefault();
+  var rodo = document.getElementById("f6");
+  if(!rodo.checked){ rodo.setCustomValidity(t("rodo.err")); rodo.reportValidity(); rodo.focus(); return; }
   alert(lang === "pl"
     ? "To jest wersja demonstracyjna — formularz nie jest jeszcze podłączony. Napisz na bioleafhub.global@gmail.com."
     : "This is a demo version — the form is not connected yet. Please write to bioleafhub.global@gmail.com.");
